@@ -23,20 +23,6 @@ void main() {
   // operacao diz que não será nulo, sem o tratamento ainda.
 
   funcCalcular(n1: n1, operacao: operacao!, n2: n2);
-
-  /*   if (operacao == "+") {
-    resultado = n1 + n2;
-    print(" O resultado de $n1 + $n2 => $resultado ");
-  } else if (operacao == "-") {
-    resultado = n1 - n2;
-    print(" O resultado de $n1 - $n2 => $resultado ");
-  } else if (operacao == "*") {
-    resultado = n1 * n2;
-    print(" O resultado de $n1 * $n2 => $resultado ");
-  } else {
-    resultado = n1 / n2;
-    print(" O resultado de $n1 / $n2 => $resultado ");
-  } */
 }
 
 // função criada com obrigatoridade para fixar os conteudos, apesar na aulas da aula nao apresentaram, era algo sabia de outros cursos para fixar os conhecimentos.
@@ -60,6 +46,8 @@ funcCalcular({
       print("O resultado de $n1 / $n2 : ${n1 / n2}");
       break;
     default:
-      print("Operador digitado é inválido, tente novamente somente com  + - * / ");
+      print(
+        "Operador digitado é inválido, tente novamente somente com  + - * / ",
+      );
   }
 }
