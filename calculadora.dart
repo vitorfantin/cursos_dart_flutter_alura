@@ -1,7 +1,6 @@
 import 'dart:io';
 
 void main() {
-  double resultado = 0;
   print("--------------------");
 
   print("*--* Bem-vindo(a) ao Calculadora Fantin ! *--*");
@@ -21,7 +20,11 @@ void main() {
   print("digite o segundo número: ");
   double n2 = double.parse(stdin.readLineSync()!);
 
-  if (operacao == "+") {
+  // operacao diz que não será nulo, sem o tratamento ainda.
+
+  funcCalcular(n1: n1, operacao: operacao!, n2: n2);
+
+  /*   if (operacao == "+") {
     resultado = n1 + n2;
     print(" O resultado de $n1 + $n2 => $resultado ");
   } else if (operacao == "-") {
@@ -33,5 +36,30 @@ void main() {
   } else {
     resultado = n1 / n2;
     print(" O resultado de $n1 / $n2 => $resultado ");
+  } */
+}
+
+// função criada com obrigatoridade para fixar os conteudos, apesar na aulas da aula nao apresentaram, era algo sabia de outros cursos para fixar os conhecimentos.
+
+funcCalcular({
+  required double n1,
+  required String operacao,
+  required double n2,
+}) {
+  switch (operacao) {
+    case "+":
+      print("o Reultado de $n1 + $n2 : ${n1 + n2}");
+      break;
+    case "-":
+      print("O resultado de $n1 - $n2 : ${n1 - n2}");
+      break;
+    case "*":
+      print("O resultado de $n1 * $n2 : ${n1 * n2}");
+      break;
+    case "/":
+      print("O resultado de $n1 / $n2 : ${n1 / n2}");
+      break;
+    default:
+      print("Operador digitado é inválido, tente novamente somente com  + - * / ");
   }
 }
