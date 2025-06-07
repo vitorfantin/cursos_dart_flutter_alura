@@ -27,7 +27,7 @@ void main() {
 
 // função criada com obrigatoridade para fixar os conteudos, apesar na aulas da aula nao apresentaram, era algo sabia de outros cursos para fixar os conhecimentos.
 
-funcCalcular({
+void funcCalcular({
   required double n1,
   required String operacao,
   required double n2,
