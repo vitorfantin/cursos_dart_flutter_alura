@@ -27,8 +27,6 @@ void main() {
 
   n2 = funcEntradaNumeros();
 
-  // operacao diz que não será nulo, sem o tratamento ainda.
-
   funcCalcular(n1: n1, operacao: operacao, n2: n2);
 }
 
@@ -50,7 +48,11 @@ void funcCalcular({
       print("O resultado de $n1 * $n2 : ${n1 * n2}");
       break;
     case "/":
-      print("O resultado de $n1 / $n2 : ${n1 / n2}");
+      if (n2 == 0) {
+        print("Erro, não é possível dividir por zero ");
+      } else {
+        print("O resultado de $n1 / $n2 : ${n1 / n2}");
+      }
       break;
   }
 }
