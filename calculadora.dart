@@ -1,47 +1,38 @@
 import 'dart:io';
 
 void main() {
+  double n1 = 0;
+  double n2 = 0;
+  String operacao = "";
+
   print("--------------------");
 
   print("*--* Bem-vindo(a) ao Calculadora Fantin ! *--*");
 
   print("--------------------");
 
-  print("Digite um número: ");
-  double n1 = double.parse(stdin.readLineSync()!);
+  print("Digite primeiro número: ");
+
+  n1 = funcEntradaNumeros();
 
   print("--------------------");
 
   print("Digite qual operação deseja realizar  + | - | * | / ");
-  String? operacao = stdin.readLineSync();
+
+  operacao = funcOperacaoEntrada();
 
   print("--------------------");
 
   print("digite o segundo número: ");
-  double n2 = double.parse(stdin.readLineSync()!);
 
-  // operacao diz que não será nulo, sem o tratamento ainda.
+  n2 = funcEntradaNumeros();
 
-  funcCalcular(n1: n1, operacao: operacao!, n2: n2);
-
-  /*   if (operacao == "+") {
-    resultado = n1 + n2;
-    print(" O resultado de $n1 + $n2 => $resultado ");
-  } else if (operacao == "-") {
-    resultado = n1 - n2;
-    print(" O resultado de $n1 - $n2 => $resultado ");
-  } else if (operacao == "*") {
-    resultado = n1 * n2;
-    print(" O resultado de $n1 * $n2 => $resultado ");
-  } else {
-    resultado = n1 / n2;
-    print(" O resultado de $n1 / $n2 => $resultado ");
-  } */
+  funcCalcular(n1: n1, operacao: operacao, n2: n2);
 }
 
 // função criada com obrigatoridade para fixar os conteudos, apesar na aulas da aula nao apresentaram, era algo sabia de outros cursos para fixar os conhecimentos.
 
-funcCalcular({
+void funcCalcular({
   required double n1,
   required String operacao,
   required double n2,
@@ -57,9 +48,59 @@ funcCalcular({
       print("O resultado de $n1 * $n2 : ${n1 * n2}");
       break;
     case "/":
-      print("O resultado de $n1 / $n2 : ${n1 / n2}");
+      if (n2 == 0) {
+        print("Erro, não é possível dividir por zero ");
+      } else {
+        print("O resultado de $n1 / $n2 : ${n1 / n2}");
+      }
       break;
-    default:
-      print("Operador digitado é inválido, tente novamente somente com  + - * / ");
   }
+}
+
+// PARA AS FUNCOES COM OS TRATAMENTO DE ERROS PRECISEI A RECORRER COPILOT PARA CORREÇÃO, POIS POR CONTA PROPRIA NAO ESTAVA CONSEGUINDO FAZER.
+
+double funcEntradaNumeros() {
+  double? numero;
+
+  do {
+    String? entradaUser = stdin
+        .readLineSync()
+        ?.trim(); // Removendo espaços extras;
+
+    // Verifica se a entrada é nula ou vazia
+    if (entradaUser == null || entradaUser.isEmpty) {
+      print("Valor incorreto, digite novamente!");
+      continue;
+    }
+
+    // Tenta converter a entrada para número
+    try {
+      numero = double.parse(entradaUser);
+    } catch (e) {
+      print(
+        "Entrada inválida! Apenas números inteiros ou decimais são aceitos.",
+      );
+    }
+  } while (numero == null); // Continua até que um número válido seja digitado
+
+  return numero;
+}
+
+String funcOperacaoEntrada() {
+  String? operacao;
+  List<String> operacoesValidas = ["+", "-", "*", "/"];
+
+  do {
+    operacao = stdin.readLineSync()?.trim(); // Removendo espaços extras
+
+    if (operacao == null ||
+        operacao.isEmpty ||
+        !operacoesValidas.contains(operacao)) {
+      print("Operação inválida! Por favor, digite apenas +, -, * ou /.");
+    }
+  } while (operacao == null ||
+      operacao.isEmpty ||
+      !operacoesValidas.contains(operacao));
+
+  return operacao;
 }
