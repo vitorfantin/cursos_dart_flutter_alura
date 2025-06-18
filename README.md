@@ -1,8 +1,7 @@
 # 🧠 Formação Alura: Dart — Cursos para aprender a linguagem utilizada no Flutter
 
 📅 **Trilha concluída em ANDAMENTO**  
-🔗 <a href="https://cursos.alura.com.br/formacao-dart-cursos-aprender-linguagem-utilizada-flutter" target="_blank">Link da formação na Alura</a>
-
+🔗 [Link da formação na Alura](https://cursos.alura.com.br/formacao-dart-cursos-aprender-linguagem-utilizada-flutter)
 
 ---
 
